@@ -41,6 +41,8 @@ android {
 
 dependencies {
 
+    implementation(libs.glide)
+    implementation (libs.avif.integration)
     implementation(libs.fresco)
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
