@@ -42,7 +42,8 @@ android {
 dependencies {
 
     implementation(libs.glide)
-    implementation (libs.avif.integration)
+    implementation(libs.avif.integration)
+    implementation("com.facebook.fresco:middleware:3.0.0")
     implementation(libs.fresco)
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
