@@ -21,20 +21,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val customDecoder = AvifImageDecoder()
         val uri =
             Uri.parse("https://res.cloudinary.com/swiggy/image/upload/f_avif/rng/md/carousel/production/uycdjcbljscpflwcjeob")
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        loadImage(uri, customDecoder)
+        loadImage(uri)
     }
 
-    private fun loadImage(
-        uri: Uri?,
-        customDecoder: AvifImageDecoder
-    ) {
+    private fun loadImage(uri: Uri) {
         binding.imageView.setImageURI(uri.toString())
     }
 }
