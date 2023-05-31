@@ -1,6 +1,7 @@
 package com.example.customfresco.avif
 
 import android.content.Context
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.bumptech.glide.integration.avif.AvifByteBufferBitmapDecoder
 import com.bumptech.glide.integration.avif.AvifStreamBitmapDecoder
@@ -30,17 +31,23 @@ class AvifImageDecoder(context: Context) : ImageDecoder {
         qualityInfo: QualityInfo,
         options: ImageDecodeOptions
     ): CloseableImage? = encodedImage.inputStream?.let { inputStream ->
+        val startTime = System.currentTimeMillis()
         val bitmapResource = avifDecoder.decode(
             inputStream,
             -1,
             -1,
             Options().apply { set(DECODE_FORMAT, DecodeFormat.PREFER_ARGB_8888) }
         ) ?: return null
+        Log.d(TAG, "decode: time to decode: ${System.currentTimeMillis() - startTime}")
         return CloseableStaticBitmap.of(
             bitmapResource.get(),
             glide.bitmapPool::put,
             qualityInfo,
             0
         )
+    }
+
+    companion object {
+        private const val TAG = "AvifImageDecoder"
     }
 }
