@@ -30,7 +30,7 @@ class AvifFormatChecker(context: Context) : ImageFormat.FormatChecker {
     }
 
     companion object {
-        private const val HEADER_BYTES_REQUIRED_TO_DETERMINE_AVIF_FORMAT = 12
+        private const val HEADER_BYTES_REQUIRED_TO_DETERMINE_AVIF_FORMAT = 36
         const val TAG = "AvifFormatChecker"
     }
 }
